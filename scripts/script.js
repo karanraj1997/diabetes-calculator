@@ -7,7 +7,7 @@ const resultDiv = document.getElementById("result-div")
 const questionsListDiv = document.getElementsByClassName("question")
 const smokingSubQuestions = document.getElementById("is_smoking_yes_options")
 
-let currentQuestion = 10
+let currentQuestion = 0
 
 
 const updateValue = (event) => {
