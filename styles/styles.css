@@ -1,0 +1,39 @@
+.navigation {
+  box-sizing: border-box !important;
+}
+
+input[type="radio"] {
+  cursor: pointer;
+}
+
+.display-none {
+  display: none;
+}
+#question-info, #error-info {
+  text-align: center;
+}
+#error-info {
+  color: red;
+}
+
+#result-div {
+  margin: 1rem;
+  padding: 1rem;
+}
+
+#result-div > div {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  background-color: rgba(191, 157, 223, 0.699);
+  color: black;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 1rem;
+}
+
+#result-div #risk-stage span {
+  padding: 1rem;
+  border: 1px solid black;
+}
