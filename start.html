@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/styles/styles.css" />
+  </head>
+  <body>
+    <div class="progress" style="height: 10px; margin: 1rem;">
+      <div
+        class="progress-bar"
+        role="progressbar"
+        id="progress-bar-div"
+        style="width: 0%"
+        aria-valuenow="0"
+        aria-valuemin="0"
+        aria-valuemax="100"
+      ></div>
+    </div>
+    <h1 class="m-3 text-primary">Diabetes Risk Calculator</h1>
+    <section class="container-sm p-2 pb-4">
+      <div class="question">
+        <div class="question-label">
+          <label class="form-label">Your Age</label>
+        </div>
+        <div class="question-options">
+          <div class="d-flex align-items-center">
+            <input
+              onchange="updateValue(event)"
+              type="number"
+              class="form-control m-2"
+              name="age"
+              id="age"
+              placeholder="Age"
+            />
+            <span>years</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="question-label">
+          <label>Gender</label>
+        </div>
+        <div class="question-options">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="gender"
+              id="gender_male"
+              value="male"
+              onchange="updateValue(event)"
+            />
+            <label class="form-check-label" for="gender_male"> Male </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="gender"
+              id="gender_female"
+              value="female"
+              onchange="updateValue(event)"
+            />
+            <label class="form-check-label" for="gender_female"> Female </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="question-label">
+          <label class="form-label">Height</label>
+        </div>
+        <div class="question-options">
+          <div class="d-flex align-items-center">
+            <input
+              onchange="updateValue(event)"
+              type="number"
+              class="form-control m-2"
+              name="height"
+              id="height"
+              placeholder="Height"
+            />
+            <span>cms</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="question-label">
+          <label for="exampleFormControlInput1" class="form-label"
+            >Weight</label
+          >
+        </div>
+        <div class="question-options">
+          <div class="d-flex align-items-center">
+            <input
+              onchange="updateValue(event)"
+              type="number"
+              class="form-control m-2"
+              name="weight"
+              id="weight"
+              placeholder="Weight"
+            />
+            <span>kgs</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="question-label">
+          <label for="exampleFormControlInput1" class="form-label"
+            >Ethnicity</label
+          >
+        </div>
+        <div class="question-options">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="ethnicity"
+              id="ethnicity_asian"
+              value="asian"
+              onchange="updateValue(event)"
+            />
+            <label class="form-check-label" for="ethnicity_asian">
+              Asian <br />
+              <small
+                >Including all races in Malaysia – Malay, Indian, Chinese, East
+                Malaysians, etc
+              </small>
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="ethnicity"
+              id="ethnicity_europeans"
+              value="europeans"
+              onchange="updateValue(event)"
+            />
+            <label class="form-check-label" for="ethnicity_europeans">
+              Europeans
+            </label>
+          </div>
+
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="ethnicity"
+              id="ethnicity_pacific_islands"
+              value="pacific-islands"
+              onchange="updateValue(event)"
+            />
+            <label class="form-check-label" for="ethnicity_pacific_islands">
+              Pacific Islands
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="question-label">
+          <label for="exampleFormControlInput1" class="form-label"
+            >Do you smoke cigarettes or any other tobacco product? <br />
+          </label>
+          <small>Please give the average consumption over 1 week </small>
+        </div>
+        <div class="question-options">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="is_smoking"
+              id="is_smoking_no"
+              value="no"
+              onchange="updateValue(event)"
+            />
+            <label class="form-check-label" for="is_smoking_no"> No </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="is_smoking"
+              id="is_smoking_no_more"
+              value="no-more"
+              onchange="updateValue(event)"
+            />
+            <label class="form-check-label" for="is_smoking_no_more">
+              I used to smoke but I don’t smoke anymore
+            </label>
+          </div>
+
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="is_smoking"
+              id="is_smoking_yes"
+              value="yes"
+              onchange="updateValue(event)"
+            />
+            <label class="form-check-label" for="is_smoking_yes">
+              Yes <br />
+              <small>
+                (If you ticked “Yes”, please specify average number of sticks in
+                a typical working day for each category below)
+              </small>
+            </label>
+          </div>
+        </div>
+        <div class="my-3 display-none" id="is_smoking_yes_options">
+          <strong>Number of sticks a day</strong>
+          <div class="my-3">
+            <div class="question-options">
+              <span class="question-label">
+                <small> During working hours </small>
+              </span>
+              <span>
+                <input
+                  onchange="updateValue(event)"
+                  type="number"
+                  class="form-control"
+                  name="sticks_per_day_work"
+                  id="sticks_per_day_work"
+                  placeholder=""
+                />
+              </span>
+            </div>
+            <div class="question-options">
+              <span class="question-label">
+                <small>At home </small>
+              </span>
+              <span>
+                <input
+                  onchange="updateValue(event)"
+                  type="number"
+                  class="form-control"
+                  name="sticks_per_day_home"
+                  id="sticks_per_day_home"
+                  placeholder=""
+                />
+              </span>
+            </div>
+            <div class="question-options">
+              <span class="question-label">
+                <small> At other places </small>
+              </span>
+
+              <span>
+                <input
+                  onchange="updateValue(event)"
+                  type="number"
+                  class="form-control"
+                  name="sticks_per_day_other"
+                  id="sticks_per_day_other"
+                  placeholder=""
+                />
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="question-label">
+          <label>
+            How much of physical activity do you have? (Please give the average
+            number of minutes over 1 week)
+          </label>
+        </div>
+        <div class="sub-question">
+          <div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">
+                1. Vigorous activity 
+              </label>
+              <br>
+              <small class="text-small">
+                e.g. Heavy lifting, bicycling, digging or
+                aerobics over 1 week
+              </small>
+              <div class="question-options">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="vigorous"
+                    id="vigorous_none"
+                    value="none"
+                    onchange="updateValue(event)"
+                  />
+                  <label class="form-check-label" for="vigorous_none"
+                    >None</label
+                  >
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="vigorous"
+                    id="vigorous_less_10_min"
+                    value="less_10"
+                    onchange="updateValue(event)"
+                  />
+                  <label class="form-check-label" for="vigorous_less_10_min">
+                    Less than 10 minutes
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="vigorous"
+                    id="vigorous_10_to_30"
+                    value="10to30"
+                    onchange="updateValue(event)"
+                  />
+                  <label class="form-check-label" for="vigorous_10_to_30">
+                    10 to 30 minutes
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="vigorous"
+                    id="vigorous_31_to_50"
+                    value="31to50"
+                    onchange="updateValue(event)"
+                  />
+                  <label class="form-check-label" for="vigorous_31_to_50">
+                    31 to 50 minutes
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="vigorous"
+                    id="vigorous_51_to_75"
+                    value="51to75"
+                    onchange="updateValue(event)"
+                  />
+                  <label class="form-check-label" for="vigorous_51_to_75">
+                    51 to 75 minutes
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="vigorous"
+                    id="vigorous_more_75"
+                    value="more_75"
+                    onchange="updateValue(event)"
+                  />
+                  <label class="form-check-label" for="vigorous_more_75">
+                    More than 75 minutes
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">
+                2. Moderate activity
+              </label>
+              <br>
+              <small class="text-small">
+                e.g. Carrying light load, regular paced
+                bicycling, doubles tennis or badminton. DOES NOT include
+                walking over 1 week
+              </small>
+              <div class="question-options">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="moderate"
+                    id="moderate_none"
+                    value="none"
+                    onchange="updateValue(event)"
+                  />
+                  <label class="form-check-label" for="moderate_none"
+                    >None</label
+                  >
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="moderate"
+                    id="moderate_less_10_min"
+                    value="<10"
+                    onchange="updateValue(event)"
+                  />
+                  <label class="form-check-label" for="moderate_less_10_min">
+                    Less than 10 minutes
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="moderate"
+                    id="moderate_10_to_50"
+                    value="10>50"
+                    onchange="updateValue(event)"
+                  />
+                  <label class="form-check-label" for="moderate_10_to_50">
+                    10 to 50 minutes
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="moderate"
+                    id="moderate_51_to_90"
+                    value="51>90"
+                    onchange="updateValue(event)"
+                  />
+                  <label class="form-check-label" for="moderate_51_to_90">
+                    51 to 90 minutes
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="moderate"
+                    id="moderate_91_to_150"
+                    value="91>150"
+                    onchange="updateValue(event)"
+                  />
+                  <label class="form-check-label" for="moderate_91_to_150">
+                    91 to 150 minutes
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="moderate"
+                    id="moderate_more_150"
+                    value=">150"
+                    onchange="updateValue(event)"
+                  />
+                  <label class="form-check-label" for="moderate_more_150">
+                    More than 150 minutes
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">
+                3. Walking
+              </label>
+              <br>
+              <small class="text-small">
+                MUST be at least 10 minutes CONTINUOUS duration to be
+                counted. Can include walking done during work or travelling but
+                it must have been minimum 10 continuous minutes of walking over
+                1 week
+              </small>
+              <div class="question-options">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="walking"
+                    id="walking_none"
+                    value="none"
+                    onchange="updateValue(event)"
+                  />
+                  <label class="form-check-label" for="walking_none"
+                    >None</label
+                  >
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="walking"
+                    id="walking_10_to_75_min"
+                    value="10to75"
+                    onchange="updateValue(event)"
+                  />
+                  <label class="form-check-label" for="walking_10_to_75_min">
+                    10 to 75 minutes
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="walking"
+                    id="walking_76to150"
+                    value="76to150"
+                    onchange="updateValue(event)"
+                  />
+                  <label class="form-check-label" for="walking_76to150">
+                    76 to 150 minutes
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="walking"
+                    id="walking_151_to_225"
+                    value="151to225"
+                    onchange="updateValue(event)"
+                  />
+                  <label class="form-check-label" for="walking_151_to_225">
+                    151 to 225 minutes
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="walking"
+                    id="walking_226_to_300"
+                    value="226to300"
+                    onchange="updateValue(event)"
+                  />
+                  <label class="form-check-label" for="walking_226_to_300">
+                    226 to 300 minutes
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="walking"
+                    id="walking_more_300"
+                    value="more_300"
+                    onchange="updateValue(event)"
+                  />
+                  <label class="form-check-label" for="walking_more_300">
+                    More than 300 minutes
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="question-label">
+          <label for="exampleFormControlInput1" class="form-label">
+            Do one or both of your parents have diabetes?
+          </label>
+        </div>
+
+        <div class="question-options">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="parents_have_diabetes"
+              id="parents_have_diabetes_yes"
+              value="yes"
+              onchange="updateValue(event)"
+            />
+            <label class="form-check-label" for="parents_have_diabetes_yes">
+              Yes
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="parents_have_diabetes"
+              id="parents_have_diabetes_no"
+              value="no"
+              onchange="updateValue(event)"
+            />
+            <label class="form-check-label" for="parents_have_diabetes_no">
+              No
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="question-label">
+          <label for="exampleFormControlInput1" class="form-label">
+            Have you ever been told that your blood glucose level is high? If
+            you are female, this includes during pregnancy
+          </label>
+        </div>
+        <div class="question-options">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="is_blood_glugose_high"
+              id="is_blood_glugose_high_yes"
+              value="yes"
+              onchange="updateValue(event)"
+            />
+            <label class="form-check-label" for="is_blood_glugose_high_yes">
+              Yes
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="is_blood_glugose_high"
+              id="is_blood_glugose_high_no"
+              value="no"
+              onchange="updateValue(event)"
+            />
+            <label class="form-check-label" for="is_blood_glugose_high_no">
+              No
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="question-label">
+          <label for="exampleFormControlInput1" class="form-label">
+            Are you taking medication for hypertension?
+          </label>
+        </div>
+        <div class="question-options">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="have_hypertension"
+              id="have_hypertension_yes"
+              value="yes"
+              onchange="updateValue(event)"
+            />
+            <label class="form-check-label" for="have_hypertension_yes">
+              Yes
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="have_hypertension"
+              id="have_hypertension_no"
+              value="europeans"
+              onchange="updateValue(event)"
+            />
+            <label class="form-check-label" for="have_hypertension_no">
+              No
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="question-label">
+          <label for="exampleFormControlInput1" class="form-label">
+            Do you currently have or recently had any of these symptoms? Please
+            tick all that apply
+          </label>
+        </div>
+        <div class="question-options">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="symptoms"
+              id="increased_thirst"
+              value="increased thirst"
+              onchange="updateValue(event)"
+            />
+            <label class="form-check-label" for="increased_thirst">
+              Increased thirst
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="symptoms"
+              id="frequent_urination"
+              value="frequent urination"
+              onchange="updateValue(event)"
+            />
+            <label class="form-check-label" for="frequent_urination">
+              Frequent urination
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="symptoms"
+              id="extreme_hunger"
+              value="extreme hunger"
+              onchange="updateValue(event)"
+            />
+            <label class="form-check-label" for="extreme_hunger">
+              Extreme hunger
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="symptoms"
+              id="unexplained_weight_loss"
+              value="unexplained weight loss"
+              onchange="updateValue(event)"
+            />
+            <label class="form-check-label" for="unexplained_weight_loss">
+              Unexplained weight loss
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="symptoms"
+              id="slow_healing_sores"
+              value="slow healing sores"
+              onchange="updateValue(event)"
+            />
+            <label class="form-check-label" for="slow_healing_sores">
+              Slow healing sores
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="symptoms"
+              id="frequent_infections"
+              value="frequent infections"
+              onchange="updateValue(event)"
+            />
+            <label class="form-check-label" for="frequent_infections">
+              Frequent infections, eg on gums or skin or for ladies, in the
+              vagina
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="symptoms"
+              id="numbness_or_tingling"
+              value="numbness or tingling"
+              onchange="updateValue(event)"
+            />
+            <label class="form-check-label" for="numbness_or_tingling">
+              Numbness or tingling of the toes, feet or fingers
+            </label>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div id="result-div" class="display-none">
+      <div>
+        <h3 class="text-center">YOUR RISK OF DEVELOPING DIABETES OVER THE NEXT 5 YEARS IS</h3>
+        <h4 id="percentage">11.67%</h4>
+        <span>Your Risk Score</span>
+        <div class="d-flex" id="risk-stage">
+          <span class="bg-success text-white text-center"> LOW RISK</span>
+          <span class="bg-white text-center"> MODERATE RISK</span>
+          <span class="bg-white text-center"> HIGH RISK</span>
+        </div>
+        <div class="text-center">
+          <h6>Your permanent risk factors are</h6>
+          <p>Family History</p>
+        </div>
+        <div class="text-center">
+          <h6>
+            The modifiable risk factors which you need to pay attention to are
+            your:
+          </h6>
+          <p>Exercise</p>
+        </div>
+      </div>
+      <small class="text-center">
+        In Malaysia, 9.2% of males and 8.6% of females have undiagnosed
+        diabetes. In 2018, Malaysia topped the Western Pacific region with a
+        diabetes prevalence rate of 16.8%, affecting approximately 3.6 million
+        people of the total adult population. The greatest proportion of the
+        burden from diabetes occurs between the ages of 50 and 69 years, which
+        accounts for 42.8% of the attributable costs; however, the burden of
+        disease costs of diabetes start to rapidly rise from the age of 30
+        years. Therefore, it is imperative that the possibility of having
+        diabetes be taken very seriously.
+      </p>
+    </div>
+    <div id="error-info"></div>
+    <div id="question-info"></div>
+    <div class="clearfix px-4 navigation">
+      <button
+        type="button"
+        class="btn btn-secondary float-start"
+        onclick="navigateHome(event)"
+        id="home-btn"
+      >
+        Back to Home
+      </button>
+      <button
+        type="button"
+        class="btn btn-secondary float-start"
+        onclick="handlePrev(event)"
+        id="prev-btn"
+      >
+        Prev
+      </button>
+      <button
+        type="button"
+        class="btn btn-primary float-end"
+        onclick="handleNext(event)"
+        id="next-btn"
+      >
+        Next
+      </button>
+    </div>
+    <script src="/scripts/script.js"></script>
+  </body>
+</html>

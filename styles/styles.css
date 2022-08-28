@@ -1,5 +1,13 @@
 .navigation {
   box-sizing: border-box !important;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.navigation .btn {
+  width: 100%;
+  margin: .5rem;
 }
 
 input[type="radio"] {
@@ -20,8 +28,8 @@ input[type="radio"] {
 }
 
 #result-div {
-  margin: 1rem;
   padding: 1rem;
+  box-sizing: border-box;
 }
 
 #result-div>div {
@@ -29,7 +37,7 @@ input[type="radio"] {
   align-items: center;
   width: 100%;
   justify-content: center;
-  background-color: rgba(191, 157, 223, 0.699);
+  /* background-color: rgba(191, 157, 223, 0.699); */
   color: black;
   flex-direction: column;
   box-sizing: border-box;
@@ -41,23 +49,53 @@ input[type="radio"] {
   border: 1px solid black;
 }
 
+body {
+  background-color: #fbf9f2;
+}
+
 .question {
-  background-color: bisque;
   padding: 1rem;
 }
 
 .question-options {
   padding: 1rem;
-  background-color: aliceblue;
+  background-color: white;
 }
+
 .question-label {
-  border-bottom: 1px solid black;
+  margin-bottom: 1rem;
+}
+
+.question-label label {
+  font-weight: bold;
+  /* border-bottom: 1px solid black; */
 }
 
 input[type="number"] {
   width: 100px;
 }
 
+.question-options>div {
+  padding-bottom: 1rem;
+}
+
 .question-options input[type="radio"]~label {
   cursor: pointer;
+}
+
+.question-options input[type="radio"]~label small,
+.text-small {
+  font-size: 12px;
+}
+
+#percentage {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: white;
+  background-color: green;
+  font-size: 2rem;
 }

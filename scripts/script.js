@@ -3,10 +3,12 @@ const pageInfoDiv = document.getElementById("question-info")
 const errorInfoDiv = document.getElementById("error-info")
 const nextBtn = document.getElementById("next-btn")
 const prevBtn = document.getElementById("prev-btn")
+const homeBtn = document.getElementById("home-btn")
 const resultDiv = document.getElementById("result-div")
 const questionsListDiv = document.getElementsByClassName("question")
 const smokingSubQuestions = document.getElementById("is_smoking_yes_options")
 const progressBar = document.getElementById("progress-bar-div")
+const section = document.getElementsByTagName("section")[0]
 
 let currentQuestion = 0
 
@@ -172,7 +174,6 @@ const valueCalculation = {
 //   i++
 // }
 
-
 const updateValue = (event) => {
   console.log("testing ", event.target.name, event.target.value, { event })
   if (event.target.type === "number") {
@@ -254,7 +255,6 @@ const canSubmit = () => {
   }
   return isValid
 }
-
 const updateProgressBar = () => {
   const currentValue = (currentQuestion / questionsListDiv.length) * 100
   progressBar.style = "width: " + currentValue + "%;"
@@ -262,11 +262,49 @@ const updateProgressBar = () => {
   progressBar.setAttribute("aria-valuenow", currentValue)
 }
 
+const showNextButton = () => {
+  if (nextBtn.classList.contains("display-none")) {
+    nextBtn.classList.remove("display-none")
+  }
+}
+const hideNextButton = () => {
+  if (!nextBtn.classList.contains("display-none")) {
+    nextBtn.classList.add("display-none")
+  }
+}
+const showPrevButton = () => {
+  if (prevBtn.classList.contains("display-none")) {
+    prevBtn.classList.remove("display-none")
+  }
+}
+const hidePrevButton = () => {
+  if (!prevBtn.classList.contains("display-none")) {
+    prevBtn.classList.add("display-none")
+  }
+}
+
 const updatePageInfo = () => {
   if (currentQuestion === 0) {
     prevBtn.setAttribute("disabled", "true")
   } else {
     prevBtn.removeAttribute("disabled")
+  }
+  if (currentQuestion === questionsListDiv.length -1 ) {
+    nextBtn.innerText = "Submit"
+    if (nextBtn.classList.contains("btn-primary")) {
+      nextBtn.classList.remove("btn-primary")
+    }
+    if (!nextBtn.classList.contains("btn-success")) {
+      nextBtn.classList.add("btn-success")
+    }
+  } else {
+    nextBtn.innerText = "Next"
+    if (!nextBtn.classList.contains("btn-primary")) {
+      nextBtn.classList.add("btn-primary")
+    }
+    if (nextBtn.classList.contains("btn-success")) {
+      nextBtn.classList.remove("btn-success")
+    }
   }
   updateProgressBar()
   pageInfoDiv.innerHTML = (currentQuestion + 1) + "/" + questionsListDiv.length
@@ -296,8 +334,38 @@ const showCurrentQuestion = () => {
   showQuestion(currentQuestion)
   updatePageInfo()
 }
+
+const showSection = () => {
+  if (section.classList.contains("display-none")) {
+    section.classList.remove("display-none")
+  }
+}
+const hideSection = () => {
+  if (!section.classList.contains("display-none")) {
+    section.classList.add("display-none")
+  }
+}
+
+
+const showHomeButton = () => {
+  if (homeBtn.classList.contains("display-none")) {
+    homeBtn.classList.remove("display-none")
+  }
+  hideNextButton()
+  hidePrevButton()
+
+}
+const hideHomeButton = () => {
+  if (!homeBtn.classList.contains("display-none")) {
+    homeBtn.classList.add("display-none")
+  }
+  showPrevButton()
+  showNextButton()
+}
 const handleSubmit = () => {
   hideAllQuestions()
+  showHomeButton()
+  hideSection()
   updateProgressBar()
   resultDiv.classList.remove("display-none")
   const percentage = document.getElementById("percentage")
@@ -307,7 +375,7 @@ const handleSubmit = () => {
   })
 
   percentage.innerHTML = totalValue
-  pageInfoDiv.innerHTML = "Submitted"
+  pageInfoDiv.innerHTML = ""
 }
 const handleNext = () => {
   if (!canSubmit()) {
@@ -324,6 +392,8 @@ const handleNext = () => {
   }
 }
 const handlePrev = () => {
+  hideHomeButton()
+  showSection()
   if (!resultDiv.classList.contains("display-none")) {
     resultDiv.classList.add("display-none")
   }
@@ -337,4 +407,9 @@ const handlePrev = () => {
   }
 }
 
+const navigateHome = () => {
+  window.location.href = "/"
+}
+
 showCurrentQuestion()
+hideHomeButton()
