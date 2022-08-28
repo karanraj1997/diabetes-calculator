@@ -285,9 +285,11 @@ const hidePrevButton = () => {
 
 const updatePageInfo = () => {
   if (currentQuestion === 0) {
+    hidePrevButton()
     prevBtn.setAttribute("disabled", "true")
   } else {
     prevBtn.removeAttribute("disabled")
+    showPrevButton()
   }
   if (currentQuestion === questionsListDiv.length -1 ) {
     nextBtn.innerText = "Submit"
@@ -413,3 +415,4 @@ const navigateHome = () => {
 
 showCurrentQuestion()
 hideHomeButton()
+hidePrevButton()
