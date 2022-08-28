@@ -13,13 +13,23 @@
     <link rel="stylesheet" href="/styles/styles.css" />
   </head>
   <body>
+    <div class="progress" style="height: 5px">
+      <div
+        class="progress-bar"
+        role="progressbar"
+        id="progress-bar-div"
+        style="width: 0%"
+        aria-valuenow="0"
+        aria-valuemin="0"
+        aria-valuemax="100"
+      ></div>
+    </div>
     <section class="container-sm p-2 pb-4">
       <div class="question">
-        <h3>Question 1</h3>
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label"
-            >Your Age</label
-          >
+        <div class="question-label">
+          <label class="form-label">Your Age</label>
+        </div>
+        <div class="question-options">
           <div class="d-flex align-items-center">
             <input
               onchange="updateValue(event)"
@@ -35,37 +45,40 @@
       </div>
 
       <div class="question">
-        <h3>Question 2: Gender</h3>
-        <div class="form-check">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="gender"
-            id="gender_male"
-            value="male"
-            onchange="updateValue(event)"
-          />
-          <label class="form-check-label" for="gender_male"> Male </label>
+        <div class="question-label">
+          <label>Gender</label>
         </div>
-        <div class="form-check">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="gender"
-            id="gender_female"
-            value="female"
-            onchange="updateValue(event)"
-          />
-          <label class="form-check-label" for="gender_female"> Female </label>
+        <div class="question-options">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="gender"
+              id="gender_male"
+              value="male"
+              onchange="updateValue(event)"
+            />
+            <label class="form-check-label" for="gender_male"> Male </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="gender"
+              id="gender_female"
+              value="female"
+              onchange="updateValue(event)"
+            />
+            <label class="form-check-label" for="gender_female"> Female </label>
+          </div>
         </div>
       </div>
 
       <div class="question">
-        <h3>Question 3</h3>
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label"
-            >Height</label
-          >
+        <div class="question-label">
+          <label class="form-label">Height</label>
+        </div>
+        <div class="question-options">
           <div class="d-flex align-items-center">
             <input
               onchange="updateValue(event)"
@@ -81,11 +94,12 @@
       </div>
 
       <div class="question">
-        <h3>Question 4</h3>
-        <div class="mb-3">
+        <div class="question-label">
           <label for="exampleFormControlInput1" class="form-label"
             >Weight</label
           >
+        </div>
+        <div class="question-options">
           <div class="d-flex align-items-center">
             <input
               onchange="updateValue(event)"
@@ -101,11 +115,12 @@
       </div>
 
       <div class="question">
-        <h3>Question 5</h3>
-        <div class="mb-3">
+        <div class="question-label">
           <label for="exampleFormControlInput1" class="form-label"
             >Ethnicity</label
           >
+        </div>
+        <div class="question-options">
           <div class="form-check">
             <input
               class="form-check-input"
@@ -151,12 +166,13 @@
       </div>
 
       <div class="question">
-        <h3>Question 6</h3>
-        <div class="mb-3">
+        <div class="question-label">
           <label for="exampleFormControlInput1" class="form-label"
             >Do you smoke cigarettes or any other tobacco product? (Please give
             the average consumption over 1 week)</label
           >
+        </div>
+        <div class="question-options">
           <div class="form-check">
             <input
               class="form-check-input"
@@ -244,11 +260,12 @@
       </div>
 
       <div class="question">
-        <h3>Question 7</h3>
-        <p>
-          How much of physical activity do you have? (Please give the average
-          number of minutes over 1 week)
-        </p>
+        <div class="question-label">
+          <label>
+            How much of physical activity do you have? (Please give the average
+            number of minutes over 1 week)
+          </label>
+        </div>
         <div class="sub-question">
           <ol type="a">
             <li>
@@ -257,84 +274,86 @@
                   Vigorous activity (e.g. Heavy lifting, bicycling, digging or
                   aerobics) over 1 week
                 </label>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="vigorous"
-                    id="vigorous_none"
-                    value="none"
-                    onchange="updateValue(event)"
-                  />
-                  <label class="form-check-label" for="vigorous_none"
-                    >None</label
-                  >
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="vigorous"
-                    id="vigorous_less_10_min"
-                    value="less_10"
-                    onchange="updateValue(event)"
-                  />
-                  <label class="form-check-label" for="vigorous_less_10_min">
-                    Less than 10 minutes
-                  </label>
-                </div>
+                <div class="question-options">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="vigorous"
+                      id="vigorous_none"
+                      value="none"
+                      onchange="updateValue(event)"
+                    />
+                    <label class="form-check-label" for="vigorous_none"
+                      >None</label
+                    >
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="vigorous"
+                      id="vigorous_less_10_min"
+                      value="less_10"
+                      onchange="updateValue(event)"
+                    />
+                    <label class="form-check-label" for="vigorous_less_10_min">
+                      Less than 10 minutes
+                    </label>
+                  </div>
 
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="vigorous"
-                    id="vigorous_10_to_30"
-                    value="10to30"
-                    onchange="updateValue(event)"
-                  />
-                  <label class="form-check-label" for="vigorous_10_to_30">
-                    10 to 30 minutes
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="vigorous"
-                    id="vigorous_31_to_50"
-                    value="31to50"
-                    onchange="updateValue(event)"
-                  />
-                  <label class="form-check-label" for="vigorous_31_to_50">
-                    31 to 50 minutes
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="vigorous"
-                    id="vigorous_51_to_75"
-                    value="51to75"
-                    onchange="updateValue(event)"
-                  />
-                  <label class="form-check-label" for="vigorous_51_to_75">
-                    51 to 75 minutes
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="vigorous"
-                    id="vigorous_more_75"
-                    value="more_75"
-                    onchange="updateValue(event)"
-                  />
-                  <label class="form-check-label" for="vigorous_more_75">
-                    More than 75 minutes
-                  </label>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="vigorous"
+                      id="vigorous_10_to_30"
+                      value="10to30"
+                      onchange="updateValue(event)"
+                    />
+                    <label class="form-check-label" for="vigorous_10_to_30">
+                      10 to 30 minutes
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="vigorous"
+                      id="vigorous_31_to_50"
+                      value="31to50"
+                      onchange="updateValue(event)"
+                    />
+                    <label class="form-check-label" for="vigorous_31_to_50">
+                      31 to 50 minutes
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="vigorous"
+                      id="vigorous_51_to_75"
+                      value="51to75"
+                      onchange="updateValue(event)"
+                    />
+                    <label class="form-check-label" for="vigorous_51_to_75">
+                      51 to 75 minutes
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="vigorous"
+                      id="vigorous_more_75"
+                      value="more_75"
+                      onchange="updateValue(event)"
+                    />
+                    <label class="form-check-label" for="vigorous_more_75">
+                      More than 75 minutes
+                    </label>
+                  </div>
                 </div>
               </div>
             </li>
@@ -346,84 +365,86 @@
                   bicycling, doubles tennis or badminton. DOES NOT include
                   walking) over 1 week
                 </label>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="moderate"
-                    id="moderate_none"
-                    value="none"
-                    onchange="updateValue(event)"
-                  />
-                  <label class="form-check-label" for="moderate_none"
-                    >None</label
-                  >
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="moderate"
-                    id="moderate_less_10_min"
-                    value="<10"
-                    onchange="updateValue(event)"
-                  />
-                  <label class="form-check-label" for="moderate_less_10_min">
-                    Less than 10 minutes
-                  </label>
-                </div>
+                <div class="question-options">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="moderate"
+                      id="moderate_none"
+                      value="none"
+                      onchange="updateValue(event)"
+                    />
+                    <label class="form-check-label" for="moderate_none"
+                      >None</label
+                    >
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="moderate"
+                      id="moderate_less_10_min"
+                      value="<10"
+                      onchange="updateValue(event)"
+                    />
+                    <label class="form-check-label" for="moderate_less_10_min">
+                      Less than 10 minutes
+                    </label>
+                  </div>
 
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="moderate"
-                    id="moderate_10_to_50"
-                    value="10>50"
-                    onchange="updateValue(event)"
-                  />
-                  <label class="form-check-label" for="moderate_10_to_50">
-                    10 to 50 minutes
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="moderate"
-                    id="moderate_51_to_90"
-                    value="51>90"
-                    onchange="updateValue(event)"
-                  />
-                  <label class="form-check-label" for="moderate_51_to_90">
-                    51 to 90 minutes
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="moderate"
-                    id="moderate_91_to_150"
-                    value="91>150"
-                    onchange="updateValue(event)"
-                  />
-                  <label class="form-check-label" for="moderate_91_to_150">
-                    91 to 150 minutes
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="moderate"
-                    id="moderate_more_150"
-                    value=">150"
-                    onchange="updateValue(event)"
-                  />
-                  <label class="form-check-label" for="moderate_more_150">
-                    More than 150 minutes
-                  </label>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="moderate"
+                      id="moderate_10_to_50"
+                      value="10>50"
+                      onchange="updateValue(event)"
+                    />
+                    <label class="form-check-label" for="moderate_10_to_50">
+                      10 to 50 minutes
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="moderate"
+                      id="moderate_51_to_90"
+                      value="51>90"
+                      onchange="updateValue(event)"
+                    />
+                    <label class="form-check-label" for="moderate_51_to_90">
+                      51 to 90 minutes
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="moderate"
+                      id="moderate_91_to_150"
+                      value="91>150"
+                      onchange="updateValue(event)"
+                    />
+                    <label class="form-check-label" for="moderate_91_to_150">
+                      91 to 150 minutes
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="moderate"
+                      id="moderate_more_150"
+                      value=">150"
+                      onchange="updateValue(event)"
+                    />
+                    <label class="form-check-label" for="moderate_more_150">
+                      More than 150 minutes
+                    </label>
+                  </div>
                 </div>
               </div>
             </li>
@@ -436,84 +457,86 @@
                   but it must have been minimum 10 continuous minutes of
                   walking) over 1 week
                 </label>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="walking"
-                    id="walking_none"
-                    value="none"
-                    onchange="updateValue(event)"
-                  />
-                  <label class="form-check-label" for="walking_none"
-                    >None</label
-                  >
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="walking"
-                    id="walking_10_to_75_min"
-                    value="10to75"
-                    onchange="updateValue(event)"
-                  />
-                  <label class="form-check-label" for="walking_10_to_75_min">
-                    10 to 75 minutes
-                  </label>
-                </div>
+                <div class="question-options">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="walking"
+                      id="walking_none"
+                      value="none"
+                      onchange="updateValue(event)"
+                    />
+                    <label class="form-check-label" for="walking_none"
+                      >None</label
+                    >
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="walking"
+                      id="walking_10_to_75_min"
+                      value="10to75"
+                      onchange="updateValue(event)"
+                    />
+                    <label class="form-check-label" for="walking_10_to_75_min">
+                      10 to 75 minutes
+                    </label>
+                  </div>
 
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="walking"
-                    id="walking_76to150"
-                    value="76to150"
-                    onchange="updateValue(event)"
-                  />
-                  <label class="form-check-label" for="walking_76to150">
-                    76 to 150 minutes
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="walking"
-                    id="walking_151_to_225"
-                    value="151to225"
-                    onchange="updateValue(event)"
-                  />
-                  <label class="form-check-label" for="walking_151_to_225">
-                    151 to 225 minutes
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="walking"
-                    id="walking_226_to_300"
-                    value="226to300"
-                    onchange="updateValue(event)"
-                  />
-                  <label class="form-check-label" for="walking_226_to_300">
-                    226 to 300 minutes
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="walking"
-                    id="walking_more_300"
-                    value="more_300"
-                    onchange="updateValue(event)"
-                  />
-                  <label class="form-check-label" for="walking_more_300">
-                    More than 300 minutes
-                  </label>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="walking"
+                      id="walking_76to150"
+                      value="76to150"
+                      onchange="updateValue(event)"
+                    />
+                    <label class="form-check-label" for="walking_76to150">
+                      76 to 150 minutes
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="walking"
+                      id="walking_151_to_225"
+                      value="151to225"
+                      onchange="updateValue(event)"
+                    />
+                    <label class="form-check-label" for="walking_151_to_225">
+                      151 to 225 minutes
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="walking"
+                      id="walking_226_to_300"
+                      value="226to300"
+                      onchange="updateValue(event)"
+                    />
+                    <label class="form-check-label" for="walking_226_to_300">
+                      226 to 300 minutes
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="walking"
+                      id="walking_more_300"
+                      value="more_300"
+                      onchange="updateValue(event)"
+                    />
+                    <label class="form-check-label" for="walking_more_300">
+                      More than 300 minutes
+                    </label>
+                  </div>
                 </div>
               </div>
             </li>
@@ -522,11 +545,13 @@
       </div>
 
       <div class="question">
-        <h3>Question 8</h3>
-        <div class="mb-3">
+        <div class="question-label">
           <label for="exampleFormControlInput1" class="form-label">
             Do one or both of your parents have diabetes?
           </label>
+        </div>
+
+        <div class="question-options">
           <div class="form-check">
             <input
               class="form-check-input"
@@ -546,7 +571,7 @@
               type="radio"
               name="parents_have_diabetes"
               id="parents_have_diabetes_no"
-              value="europeans"
+              value="no"
               onchange="updateValue(event)"
             />
             <label class="form-check-label" for="parents_have_diabetes_no">
@@ -557,12 +582,13 @@
       </div>
 
       <div class="question">
-        <h3>Question 9</h3>
-        <div class="mb-3">
+        <div class="question-label">
           <label for="exampleFormControlInput1" class="form-label">
             Have you ever been told that your blood glucose level is high? If
             you are female, this includes during pregnancy
           </label>
+        </div>
+        <div class="question-options">
           <div class="form-check">
             <input
               class="form-check-input"
@@ -582,7 +608,7 @@
               type="radio"
               name="is_blood_glugose_high"
               id="is_blood_glugose_high_no"
-              value="europeans"
+              value="no"
               onchange="updateValue(event)"
             />
             <label class="form-check-label" for="is_blood_glugose_high_no">
@@ -593,11 +619,12 @@
       </div>
 
       <div class="question">
-        <h3>Question 10</h3>
-        <div class="mb-3">
+        <div class="question-label">
           <label for="exampleFormControlInput1" class="form-label">
             Are you taking medication for hypertension?
           </label>
+        </div>
+        <div class="question-options">
           <div class="form-check">
             <input
               class="form-check-input"
@@ -628,12 +655,13 @@
       </div>
 
       <div class="question">
-        <h3>Question 11</h3>
-        <div class="mb-3">
+        <div class="question-label">
           <label for="exampleFormControlInput1" class="form-label">
             Do you currently have or recently had any of these symptoms? Please
             tick all that apply
           </label>
+        </div>
+        <div class="question-options">
           <div class="form-check">
             <input
               class="form-check-input"

@@ -9,9 +9,12 @@ input[type="radio"] {
 .display-none {
   display: none;
 }
-#question-info, #error-info {
+
+#question-info,
+#error-info {
   text-align: center;
 }
+
 #error-info {
   color: red;
 }
@@ -21,7 +24,7 @@ input[type="radio"] {
   padding: 1rem;
 }
 
-#result-div > div {
+#result-div>div {
   display: flex;
   align-items: center;
   width: 100%;
@@ -36,4 +39,25 @@ input[type="radio"] {
 #result-div #risk-stage span {
   padding: 1rem;
   border: 1px solid black;
+}
+
+.question {
+  background-color: bisque;
+  padding: 1rem;
+}
+
+.question-options {
+  padding: 1rem;
+  background-color: aliceblue;
+}
+.question-label {
+  border-bottom: 1px solid black;
+}
+
+input[type="number"] {
+  width: 100px;
+}
+
+.question-options input[type="radio"]~label {
+  cursor: pointer;
 }
