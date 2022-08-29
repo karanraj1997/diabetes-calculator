@@ -1,3 +1,6 @@
+body {
+  background-color: #fbf9f2;
+}
 .navigation {
   box-sizing: border-box !important;
   display: flex;
@@ -8,7 +11,7 @@
 
 .navigation .btn {
   width: 100%;
-  margin: .5rem;
+  margin: 0.5rem;
 }
 
 input[type="radio"] {
@@ -33,7 +36,7 @@ input[type="radio"] {
   box-sizing: border-box;
 }
 
-#result-div>div {
+#result-div > div {
   display: flex;
   align-items: center;
   width: 100%;
@@ -46,12 +49,9 @@ input[type="radio"] {
 }
 
 #result-div #risk-stage span {
-  padding: 1rem;
+  padding: .75rem;
+  font-size: 12px;
   border: 1px solid black;
-}
-
-body {
-  background-color: #fbf9f2;
 }
 
 .question {
@@ -76,17 +76,36 @@ input[type="number"] {
   width: 100px;
 }
 
-.question-options>div {
+.question-options > div {
   padding-bottom: 1rem;
 }
 
-.question-options input[type="radio"]~label {
+.question-options input[type="radio"] ~ label {
   cursor: pointer;
 }
 
-.question-options input[type="radio"]~label small,
+.question-options input[type="radio"] ~ label small,
 .text-small {
   font-size: 12px;
+}
+
+.question-options input[type="radio"]:checked,
+.question-options input[type="radio"]:checked:after,
+.question-options input[type="checkbox"]:checked,
+.question-options input[type="checkbox"]:checked:after
+{
+  background-color: #ffc107;
+  border-color: #ffc107;
+  outline-color: #ffc107;
+}
+.question-options input[type="radio"]:active,
+.question-options input[type="radio"]:focus {
+  border-color: #ffc107;
+  outline-color: #ffc107;
+}
+
+.bg-brand-color {
+  background-color: #ffc107;
 }
 
 #percentage {
