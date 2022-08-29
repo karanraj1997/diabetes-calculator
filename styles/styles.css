@@ -98,12 +98,16 @@ input[type="number"] {
   border-color: #ffc107;
   outline-color: #ffc107;
 }
-.question-options input[type="radio"]:active,
-.question-options input[type="radio"]:focus {
+.question-options input[type="radio"]:active {
   border-color: #ffc107;
   outline-color: #ffc107;
 }
 
+.form-check-input:focus,
+.form-control:focus {
+  border-color: #ffc10748;
+  box-shadow: 0 0 0 0.25rem rgba(253, 217, 13, 0.25)
+}
 .bg-brand-color {
   background-color: #ffc107;
 }
